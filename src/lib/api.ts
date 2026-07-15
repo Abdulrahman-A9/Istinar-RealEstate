@@ -1,7 +1,8 @@
 import { demoAnalyses, demoDevelopments, demoInterests, demoLots, demoMetrics, demoProviders } from "@/lib/demo-data";
 import type { Analysis, DashboardMetrics, Development, Interest, Lot, LotStatus, Provider } from "@/lib/types";
 
-const API_URL = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api").replace(/\/$/, "");
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || "").replace(/\/$/, "");
+const API_CONFIGURED = Boolean(API_URL);
 const ACCESS_KEY = "istinar.access";
 const REFRESH_KEY = "istinar.refresh";
 
@@ -46,6 +47,7 @@ function unwrap<T>(payload: unknown): T {
 }
 
 async function refreshAccessToken() {
+  if (!API_CONFIGURED) return null;
   const refresh = authStore.refresh;
   if (!refresh) return null;
   const response = await fetch(`${API_URL}/auth/token/refresh/`, {
@@ -61,6 +63,7 @@ async function refreshAccessToken() {
 }
 
 async function request<T>(path: string, init: RequestInit = {}, retried = false): Promise<T> {
+  if (!API_CONFIGURED) throw new ApiError("لم يتم إعداد عنوان خدمة API بعد.");
   const headers = new Headers(init.headers);
   headers.set("Accept", "application/json");
   if (init.body && !headers.has("Content-Type")) headers.set("Content-Type", "application/json");
@@ -94,6 +97,7 @@ async function request<T>(path: string, init: RequestInit = {}, retried = false)
 }
 
 async function withFallback<T>(operation: () => Promise<T>, fallback: T): Promise<{ data: T; mode: "live" | "demo" }> {
+  if (!API_CONFIGURED) return { data: fallback, mode: "demo" };
   try {
     return { data: await operation(), mode: "live" };
   } catch (error) {
