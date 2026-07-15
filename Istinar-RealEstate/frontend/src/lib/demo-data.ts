@@ -1,0 +1,148 @@
+import type { Analysis, DashboardMetrics, Development, Interest, Lot, Provider } from "@/lib/types";
+
+export const demoProviders: Provider[] = [
+  {
+    id: 1,
+    slug: "ruya-al-ard",
+    name: "رؤية الأرض للتطوير",
+    city: "حائل",
+    tagline: "مخططات سكنية تُدار بوضوح",
+    description: "شركة تطوير محلية تركّز على المجتمعات السكنية المتوازنة والمخططات القابلة للحياة.",
+    verified: true,
+    developmentCount: 4,
+    activeLots: 128,
+    accent: "#0f766e",
+  },
+  {
+    id: 2,
+    slug: "naseej-properties",
+    name: "نسيج العقارية",
+    city: "الرياض",
+    tagline: "فرص تجارية في مواقع حيوية",
+    description: "فريق استثماري يبني منتجات عقارية مدروسة حول الحركة والطلب المحلي.",
+    verified: true,
+    developmentCount: 7,
+    activeLots: 214,
+    accent: "#ba7a25",
+  },
+  {
+    id: 3,
+    slug: "waseet-al-shamal",
+    name: "وسيط الشمال",
+    city: "القصيم",
+    tagline: "عقارات تُفهم قبل أن تُشترى",
+    description: "مكتب متخصص في تسويق المخططات والفرص ذات الاستخدام المختلط.",
+    verified: false,
+    developmentCount: 3,
+    activeLots: 67,
+    accent: "#465a75",
+  },
+];
+
+export const demoDevelopments: Development[] = [
+  {
+    id: 1,
+    slug: "rawdat-al-hail",
+    providerId: 1,
+    providerName: "رؤية الأرض للتطوير",
+    name: "روضة حائل",
+    city: "حائل",
+    district: "النقرة",
+    type: "سكني",
+    description: "مخطط سكني هادئ على امتداد طرق محلية حيوية، صُمم لأسر تبحث عن وضوح الموقع والخدمة.",
+    totalLots: 64,
+    availableLots: 38,
+    minPrice: 284000,
+    area: "84,000 م²",
+    status: "published",
+    featured: true,
+    signal: "إقبال متزايد",
+  },
+  {
+    id: 2,
+    slug: "qimam-business-park",
+    providerId: 2,
+    providerName: "نسيج العقارية",
+    name: "قمم للأعمال",
+    city: "الرياض",
+    district: "العقيق",
+    type: "تجاري",
+    description: "قطع تجارية منتقاة على محور حركة، مهيأة لمطاعم ومقاهٍ وخدمات يومية.",
+    totalLots: 36,
+    availableLots: 17,
+    minPrice: 870000,
+    area: "31,500 م²",
+    status: "published",
+    featured: true,
+    signal: "طلب قوي",
+  },
+  {
+    id: 3,
+    slug: "sama-al-jubail",
+    providerId: 1,
+    providerName: "رؤية الأرض للتطوير",
+    name: "سما الجبيل",
+    city: "الجبيل",
+    district: "الفناتير",
+    type: "سكني",
+    description: "مجتمع منخفض الكثافة، بخيارات قطع متنوعة قرب الخدمات التعليمية والحدائق.",
+    totalLots: 82,
+    availableLots: 54,
+    minPrice: 365000,
+    area: "110,000 م²",
+    status: "published",
+    signal: "إطلاق جديد",
+  },
+  {
+    id: 4,
+    slug: "almadaar-mixed-use",
+    providerId: 3,
+    providerName: "وسيط الشمال",
+    name: "المدار متعدد الاستخدام",
+    city: "بريدة",
+    district: "الريان",
+    type: "متعدد الاستخدام",
+    description: "واجهة تجمع وحدات تجارية ومكاتب وخدمات محلية ضمن مسافة مشي واضحة.",
+    totalLots: 28,
+    availableLots: 9,
+    minPrice: 610000,
+    area: "22,300 م²",
+    status: "review",
+    signal: "قيد المراجعة",
+  },
+];
+
+export const demoLots: Lot[] = [
+  { id: 101, developmentId: 1, code: "A-01", block: "A", area: 420, price: 284000, status: "available", use: "سكني", frontage: 20, depth: 21, orientation: "شمالي", demandScore: 78, geometry: "polygon(8% 10%, 31% 10%, 29% 36%, 7% 38%)", notes: "قرب حديقة الحي" },
+  { id: 102, developmentId: 1, code: "A-02", block: "A", area: 438, price: 299000, status: "reserved", use: "سكني", frontage: 21, depth: 21, orientation: "شمالي", demandScore: 84, geometry: "polygon(34% 10%, 57% 10%, 55% 36%, 32% 38%)" },
+  { id: 103, developmentId: 1, code: "A-03", block: "A", area: 456, price: 318000, status: "available", use: "سكني", frontage: 22, depth: 21, orientation: "شرقي", demandScore: 88, geometry: "polygon(60% 10%, 84% 10%, 82% 36%, 58% 38%)" },
+  { id: 104, developmentId: 1, code: "B-11", block: "B", area: 500, price: 360000, status: "sold", use: "سكني", frontage: 25, depth: 20, orientation: "غربي", demandScore: 72, geometry: "polygon(11% 51%, 35% 49%, 36% 76%, 10% 78%)" },
+  { id: 105, developmentId: 1, code: "B-12", block: "B", area: 480, price: 345000, status: "available", use: "سكني", frontage: 24, depth: 20, orientation: "غربي", demandScore: 81, geometry: "polygon(39% 49%, 64% 50%, 65% 76%, 38% 76%)" },
+  { id: 106, developmentId: 1, code: "B-13", block: "B", area: 520, price: 382000, status: "hold", use: "سكني", frontage: 26, depth: 20, orientation: "جنوبي", demandScore: 69, geometry: "polygon(68% 49%, 91% 51%, 92% 78%, 67% 76%)" },
+  { id: 201, developmentId: 2, code: "C-07", block: "C", area: 310, price: 870000, status: "available", use: "تجاري", frontage: 15, depth: 21, orientation: "شمالي", demandScore: 91, geometry: "polygon(9% 10%, 34% 9%, 31% 38%, 7% 35%)" },
+  { id: 202, developmentId: 2, code: "C-08", block: "C", area: 325, price: 910000, status: "available", use: "تجاري", frontage: 15, depth: 22, orientation: "شمالي", demandScore: 93, geometry: "polygon(40% 9%, 67% 9%, 65% 38%, 36% 35%)" },
+  { id: 203, developmentId: 2, code: "D-01", block: "D", area: 390, price: 1040000, status: "reserved", use: "تجاري", frontage: 18, depth: 21, orientation: "شرقي", demandScore: 89, geometry: "polygon(18% 52%, 44% 51%, 42% 80%, 15% 81%)" },
+];
+
+export const demoInterests: Interest[] = [
+  { id: 1, lotCode: "A-03", development: "روضة حائل", customer: "مها الشمري", phone: "050 123 4567", email: "maha@example.com", source: "رابط المخطط", status: "new", createdAt: "منذ 12 دقيقة", budget: 350000 },
+  { id: 2, lotCode: "B-12", development: "روضة حائل", customer: "خالد العتيبي", phone: "055 740 0231", email: "khalid@example.com", source: "بحث استنار", status: "contacted", createdAt: "منذ ساعة", budget: 400000 },
+  { id: 3, lotCode: "C-08", development: "قمم للأعمال", customer: "شركة نقطة قهوة", phone: "053 900 1122", email: "hello@nuqtah.sa", source: "تحليل فرصة", status: "qualified", createdAt: "أمس", budget: 1200000 },
+  { id: 4, lotCode: "A-01", development: "روضة حائل", customer: "سارة الحربي", phone: "056 601 0088", email: "sara@example.com", source: "رابط المخطط", status: "closed", createdAt: "قبل يومين", budget: 290000 },
+];
+
+export const demoAnalyses: Analysis[] = [
+  { id: 1, title: "مقهى حي على واجهة شمالية", lotCode: "C-08", score: 86, verdict: "فرصة قوية لطلب يومي متكرر", createdAt: "اليوم، 10:24", estimatedRevenue: 840000, confidence: "متوسط" },
+  { id: 2, title: "عيادة أسنان قرب الخدمات", lotCode: "A-03", score: 74, verdict: "الطلب جيد مع حساسية للتموضع", createdAt: "أمس", estimatedRevenue: 560000, confidence: "استكشافي" },
+  { id: 3, title: "مغسلة سيارات ذاتية", lotCode: "D-01", score: 68, verdict: "تحتاج تحققاً ميدانياً قبل القرار", createdAt: "11 يوليو", estimatedRevenue: 410000, confidence: "استكشافي" },
+];
+
+export const demoMetrics: DashboardMetrics = {
+  views: 18420,
+  interests: 126,
+  conversion: 4.8,
+  availability: 59,
+  trend: 18,
+};
+
+export const currency = (value: number) => new Intl.NumberFormat("ar-SA", { maximumFractionDigits: 0 }).format(value) + " ر.س";
